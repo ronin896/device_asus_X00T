@@ -391,8 +391,17 @@ PRODUCT_PACKAGES += \
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
+    fstab.qcom \
+    init.amt.rc \
+    init.amt.target.rc \
+    init.msm.usb.configfs.rc \
+    init.qcom.factory.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.target.rc \
+    ueventd.qcom.rc \
+    init.safailnet.rc
+    
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_X00T
