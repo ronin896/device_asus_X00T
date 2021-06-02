@@ -43,6 +43,15 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String PREF_HEADSET = "dirac_headset_pref";
     private static final String PREF_PRESET = "dirac_preset_pref";
 
+    final static String PREF_HEADPHONE_GAIN = "headphone_gain";
+    private static final String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
+    final static String PREF_MICROPHONE_GAIN = "microphone_gain";
+    private static final String MICROPHONE_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
+    final static String PREF_EARPIECE_GAIN = "earpiece_gain";
+    public static final String EARPIECE_GAIN_PATH = "/sys/kernel/sound_control/earpiece_gain";
+    final static String PREF_SPEAKER_GAIN = "speaker_gain";
+    public static final String SPEAKER_GAIN_PATH = "/sys/kernel/sound_control/speaker_gain";
+
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     private static final String CATEGORY_DISPLAY = "display";
     private static final String PREF_DEVICE_KCAL = "device_kcal";
@@ -59,6 +68,13 @@ public class DeviceSettings extends PreferenceFragment implements
     private CustomSeekBarPreference mHeadphoneGain;
     private CustomSeekBarPreference mMicrophoneGain;
     private Preference mKcal;
+    private Preference mAmbientPref;
+    private CustomSeekBarPreference mEarpieceGain;
+    private CustomSeekBarPreference mSpeakerGain;
+    
+    private SecureSettingListPreference mSPECTRUM;
+
+    private SecureSettingListPreference mTCP;
 
     private SecureSettingSwitchPreference mBacklightDimmer;
 
@@ -90,6 +106,26 @@ public class DeviceSettings extends PreferenceFragment implements
 	// Preset
         SecureSettingListPreference preset = (SecureSettingListPreference) findPreference(PREF_PRESET);
         preset.setOnPreferenceChangeListener(this);
+	// Dirac
+        mEnableDirac = (SecureSettingSwitchPreference) findPreference(PREF_ENABLE_DIRAC);
+        mEnableDirac.setOnPreferenceChangeListener(this);
+        mEnableDirac.setChecked(enhancerEnabled);
+    //gains
+        mHeadphoneGain = (CustomSeekBarPreference) findPreference(PREF_HEADPHONE_GAIN);
+        mHeadphoneGain.setOnPreferenceChangeListener(this);
+        mMicrophoneGain = (CustomSeekBarPreference) findPreference(PREF_MICROPHONE_GAIN);
+        mMicrophoneGain.setOnPreferenceChangeListener(this);
+        mEarpieceGain = (CustomSeekBarPreference) findPreference(PREF_EARPIECE_GAIN);
+        mEarpieceGain.setOnPreferenceChangeListener(this);
+        mSpeakerGain = (CustomSeekBarPreference) findPreference(PREF_SPEAKER_GAIN);
+        mSpeakerGain.setOnPreferenceChangeListener(this);
+
+	// HeadSet
+        mHeadsetType = (SecureSettingListPreference) findPreference(PREF_HEADSET);
+        mHeadsetType.setOnPreferenceChangeListener(this);
+	// PreSet
+        mPreset = (SecureSettingListPreference) findPreference(PREF_PRESET);
+        mPreset.setOnPreferenceChangeListener(this);
         
         mContext = this.getContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
@@ -176,6 +212,21 @@ public class DeviceSettings extends PreferenceFragment implements
             case PREF_MICROPHONE_GAIN:
                 FileUtils.setValue(MICROPHONE_GAIN_PATH, (int) value);
                 break;
+            
+            case PREF_HEADPHONE_GAIN:
+                FileUtils.setValue(HEADPHONE_GAIN_PATH, value + " " + value);
+                break;
+
+            case PREF_MICROPHONE_GAIN:
+                FileUtils.setValue(MICROPHONE_GAIN_PATH, (int) value);
+                break;
+            case PREF_EARPIECE_GAIN:
+                FileUtils.setValue(EARPIECE_GAIN_PATH, (int) value);
+                break;
+            case PREF_SPEAKER_GAIN:
+                FileUtils.setValue(SPEAKER_GAIN_PATH, (int) value);
+               break;
+
 
             default:
                 break;
