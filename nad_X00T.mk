@@ -37,11 +37,10 @@ TARGET_VENDOR := asus
 TARGET_VENDOR_PRODUCT_NAME := X00T
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200705.002 6506677 release-keys"
+    PRIVATE_BUILD_DESC="redfin-user 11 RQ3A.210605.005 7349499 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys
-
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys"
 
 
 # The following system and vendor props will be set by vendor init
