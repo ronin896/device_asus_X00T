@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/du_X00T.mk
+    $(LOCAL_DIR)/nad_X00T.mk
 
 COMMON_LUNCH_CHOICES := \
-    du_X00T-user \
-    du_X00T-userdebug \
-    du_X00T-eng
+    nad_X00T-user \
+    nad_X00T-userdebug \
+    nad_X00T-eng
