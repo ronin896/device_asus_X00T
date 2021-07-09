@@ -34,39 +34,9 @@ public class BootReceiver extends BroadcastReceiver implements Utils {
             "max_brightness";
     private final String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
     private final String MICROPHONE_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
-    private final String EARPIECE_GAIN_PATH = "/sys/kernel/sound_control/earpiece_gain";
-    private final String SPEAKER_GAIN_PATH = "/sys/kernel/sound_control/speaker_gain";
 
     public void onReceive(Context context, Intent intent) {
 
-        // GAINS
-        int gain = Settings.Secure.getInt(context.getContentResolver(), DeviceSettings.PREF_HEADPHONE_GAIN, 5);
-        FileUtils.setValue(HEADPHONE_GAIN_PATH, gain + " " + gain);
-        FileUtils.setValue(MICROPHONE_GAIN_PATH, Settings.Secure.getInt(context.getContentResolver(), DeviceSettings.PREF_MICROPHONE_GAIN, 0));
-        FileUtils.setValue(DeviceSettings.EARPIECE_GAIN_PATH, Settings.Secure.getInt(context.getContentResolver(), DeviceSettings.PREF_EARPIECE_GAIN, 0));
-        FileUtils.setValue(DeviceSettings.SPEAKER_GAIN_PATH, Settings.Secure.getInt(context.getContentResolver(), DeviceSettings.PREF_SPEAKER_GAIN, 0));
-        
-
-        // Ambient
-        context.startService(new Intent(context, SensorsDozeService.class));
-        
-        //FPS
-        boolean enabled = sharedPrefs.getBoolean(DeviceSettings.PREF_KEY_FPS_INFO, false);
-        if (enabled) {
-            context.startService(new Intent(context, FPSInfoService.class));
-        }
-        
-	//MSM Thermal control
-	FileUtils.setValue(DeviceSettings.MSM_THERMAL_PATH, 
-		Settings.Secure.getInt(context.getContentResolver(),
-                	DeviceSettings.PERF_MSM_THERMAL, 0));
-        FileUtils.setValue(DeviceSettings.CORE_CONTROL_PATH, 
-        	Settings.Secure.getInt(context.getContentResolver(),
-                	DeviceSettings.PERF_CORE_CONTROL, 0));
-        FileUtils.setValue(DeviceSettings.VDD_RESTRICTION_PATH, 
-        	Settings.Secure.getInt(context.getContentResolver(),
-                	DeviceSettings.PERF_VDD_RESTRICTION, 0));
-        //Torch       
         FileUtils.setValue(TORCH_1_BRIGHTNESS_PATH,
                 Settings.Secure.getInt(context.getContentResolver(),
                         DeviceSettings.PREF_TORCH_BRIGHTNESS, 100));
