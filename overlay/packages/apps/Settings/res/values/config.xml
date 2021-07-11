@@ -11,7 +11,7 @@
      limitations under the License.
 -->
 <resources>
-<!-- Battery Health -->
+
 <!-- Smart Charging -->
   <bool name="config_supportSmartCharging">true</bool>
 
