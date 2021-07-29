@@ -95,12 +95,12 @@ void vendor_check_variant()
     if (sys.totalram > 4096ull * 1024 * 1024) {
         // Russian model
         if (region == "RU") {
-            build_fingerprint = "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys";
+            build_fingerprint = "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys";
             product_device = "ASUS_X00T_9";
 
         // Global model
         } else {
-            build_fingerprint = "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys";
+            build_fingerprint = "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys";
             product_device = "ASUS_X00T_3";
         }
 
@@ -108,12 +108,12 @@ void vendor_check_variant()
     } else {
         // Russian model
         if (region == "RU") {
-            build_fingerprint = "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys";
+            build_fingerprint = "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys";
             product_device = "ASUS_X00T_6";
 
         // Global model
         } else {
-            build_fingerprint = "google/redfin/redfin:11/RQ3A.210605.005/7349499:user/release-keys";
+            build_fingerprint = "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys";
             product_device = "ASUS_X00T_2";
         }
     }
